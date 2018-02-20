@@ -12,7 +12,9 @@ export default withAuth(
         username: '',
         password: ''
       };
+
       this.oktaAuth = new OktaAuth({ url: props.baseUrl });
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleUsernameChange = this.handleUsernameChange.bind(this);
       this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -66,6 +68,7 @@ export default withAuth(
               onChange={this.handleUsernameChange}
             />
           </div>
+
           <div className="form-element">
             <label>Password:</label>
             <input

@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors = require('cors')
+var cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -14,6 +14,7 @@ app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -25,9 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', index);
 app.use('/api/users', users);
-app.use('/api/hello', (req,res) => {
-  req.send({express: 'Hello from EXPRESS!'})
-})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

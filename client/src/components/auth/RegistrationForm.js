@@ -1,6 +1,7 @@
 import React from 'react';
 import OktaAuth from '@okta/okta-auth-js';
 import { withAuth } from '@okta/okta-react';
+
 import config from '../../app.config';
 
 export default withAuth(
@@ -14,10 +15,10 @@ export default withAuth(
         password: '',
         sessionToken: null
       };
-
       this.oktaAuth = new OktaAuth({ url: config.url });
       this.checkAuthentication = this.checkAuthentication.bind(this);
       this.checkAuthentication();
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
       this.handleLastNameChange = this.handleLastNameChange.bind(this);
@@ -39,15 +40,12 @@ export default withAuth(
     handleFirstNameChange(e) {
       this.setState({ firstName: e.target.value });
     }
-
     handleLastNameChange(e) {
       this.setState({ lastName: e.target.value });
     }
-
     handleEmailChange(e) {
       this.setState({ email: e.target.value });
     }
-
     handlePasswordChange(e) {
       this.setState({ password: e.target.value });
     }
@@ -82,6 +80,7 @@ export default withAuth(
         this.props.auth.redirect({ sessionToken: this.state.sessionToken });
         return null;
       }
+
       return (
         <form onSubmit={this.handleSubmit}>
           <div className="form-element">

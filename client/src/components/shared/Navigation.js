@@ -26,20 +26,33 @@ export default withAuth(
       if (this.state.authenticated === null) return null;
       const authNav = this.state.authenticated ? (
         <ul className="auth-nav">
-          <li><a href="javascript:void(0)" onClick={this.props.auth.logout}>Logout</a></li>
-          <li><Link to="/profile">Profile</Link></li>
+          <li>
+            <a href="javascript:void(0)" onClick={this.props.auth.logout}>
+              Logout
+            </a>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
         </ul>
       ) : (
         <ul className="auth-nav">
-          <li><a href="javascript:void(0)" onClick={this.props.auth.login}>Login</a></li>
-          <li><Link to="/register">Register</Link></li>
+          <li>
+            <a href="javascript:void(0)" onClick={this.props.auth.login}>
+              Login
+            </a>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
         </ul>
       );
-
       return (
         <nav>
           <ul>
-            <li><Link to="/">Home</Link></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {authNav}
           </ul>
         </nav>
