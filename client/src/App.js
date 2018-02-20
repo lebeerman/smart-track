@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
-
-import logo from './logo.svg';
-
+import { Route } from 'react-router-dom';
+import { SecureRoute, ImplicitCallback } from '@okta/okta-react';
+import Navigation from './components/shared/Navigation';
+import HomePage from './components/home/HomePage';
+import RegistrationForm from './components/auth/RegistrationForm';
+import config from './app.config';
+import LoginPage from './components/auth/LoginPage';
+import ProfilePage from './components/auth/ProfilePage';
 import './App.css';
 
-class App extends Component {
-  state = {
-    response: ''
-  };
 
-  componentDidMount() {
-    fetch('api/hello')
-      .then(res => res.json())
-      .then(res => {
-        console.log('Hi!', res);
-        this.setState({ response: res.express });
-      })
-      .catch(err => console.log(err));
-  }
-
-   
-
-
+export default class App extends Component {
+  // state = {
+  //   response: ''
+  // }
+  // componentDidMount() {
+  //   fetch('localhost://3001/api/hello/')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log('Hi!', res);
+  //       this.setState({ response: res.express });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
+  // <p className="App-intro">{this.state.response}</p>
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p>
+        <Navigation />
+        <main>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/login" render={() => <LoginPage baseUrl={config.url} />} />
+          <Route path="/implicit/callback" component={ImplicitCallback} />
+          <Route path="/register" component={RegistrationForm} />
+          <SecureRoute path="/profile" component={ProfilePage} />
+         
+        </main>
       </div>
     );
   }
 }
-
-export default App;
