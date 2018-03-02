@@ -52,6 +52,7 @@ export default withAuth(
 
     handleSubmit(e) {
       e.preventDefault();
+      console.log('HANDLED: ', this.state);
       fetch('/api/users', {
         method: 'POST',
         headers: {
