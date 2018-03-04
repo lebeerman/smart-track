@@ -19,15 +19,16 @@ export default withAuth(class ProfilePage extends React.Component {
 
   render() {
     if(!this.state.user) return null;
-    return (
-      <section className="user-profile">
+    return <section className="user-profile">
         <h1>User Profile</h1>
         <div>
-          <label>Name:</label>
+          <label>Name: </label>
           <span>{this.state.user.name}</span>
         </div>
-      </section>
-
-    )
+        <div>
+          <label>Email: </label>
+          <span>{this.state.user.email}</span>
+        </div>
+      </section>;
   }
 })

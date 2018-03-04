@@ -1,5 +1,4 @@
 # SMART Track App
-
 ---
 
 A basic CRUD app
@@ -18,8 +17,7 @@ Now to deploy to Heroku you need to take several steps, Stephen Grider does an e
 
 
 ### Auth Help: 
-- https://developer.okta.com/blog/2017/03/30/react-okta-sign-in-widget
-- https://dzone.com/articles/build-user-registration-with-node-react-and-okta
+- https://developer.okta.com/blog/2018/02/06/build-user-registration-with-node-react-and-okta
 
 ---
 

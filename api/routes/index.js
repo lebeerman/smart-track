@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express, YO' });
+  res.render('index', { title: 'SMART TRACKER DB' });
 });
 
 module.exports = router;
