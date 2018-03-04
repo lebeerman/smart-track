@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description":"SMART Goals",
   "scripts": {
-    "start": "node ./bin/www.js"
+    "start": "npm start node ./bin/www.js"
   },
   "author": "Dan Beerman",
   "license": "ISC",
