@@ -1,43 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { withAuth } from '@okta/okta-react';
+import DateTime from 'react-datetime';
+import './DateTime.css';
 
-export default withAuth(AddaGoalForm = ({ addGoal }) => {
-
-  let input;
-
-  return(
-    <div className="add-box">
-      <form
+export const AddaGoalForm = ({ addGoal, handleDate }) => {
+  return <div className="add-box">
+      <h1>New Goal</h1>
+      <form 
         onSubmit={e => {
-            e.preventDefault();
-            addGoal(input.value);
-            input.value = '';
-          }}
-        >
-      <input
-        className="form-control col-md-12"
-        ref={node => {
-          input = node;
-        }}
-      />
-      <br />
+        e.preventDefault();
+        addGoal(e);
+      }}>
+        <label>S.M.A.R.T. Goal</label>
+        <br />
+        <textarea 
+          className="form-control col-md-12" 
+          name="newGoal" 
+          placeholder="Write your SMART Goal Here!" 
+          value={this.value}
+        />
+        <br />
+        <label>Set a due date:</label>
+        <DateTime value={this.value}
+          inputProps={{ name:'dueDate', placeholder: 'DUE DATE', disabled: false }} 
+        />
+        <input type="submit" value="SUBMIT" />
       </form>
-    </div>
-  )
-});
-
-
-
-
-  render() {
-    // Render JSX
-    return (
-      <div>
-        <Title todoCount={this.state.data.length} />
-        <TodoList todos={this.state.data} remove={this.handleRemove.bind(this)} />
-      </div>
-    );
-  }
+    </div>;
 }
-ReactDOM.render(<TodoApp />, document.getElementById('container'));

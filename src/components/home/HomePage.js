@@ -11,7 +11,7 @@ export default withAuth(
       console.log('constructing!');
       this.state = {
         authenticated: null,
-        user: '',
+        user: {},
         profile: {
           firstName: 'Dan',
           lastName: 'Beerman',
@@ -47,7 +47,7 @@ export default withAuth(
     }
 
     componentDidMount() {
-      console.log('UPDATES!');
+      console.log('Mounting!');
       this.checkAuthentication();
       this.getCurrentUser();
     }
@@ -56,7 +56,7 @@ export default withAuth(
       // gets the user info from te okta API then updates user goals from smart-trak API
       this.props.auth.getUser().then(user => {
         console.log('CURRENT USER: ', user);
-        this.setState({ user });
+        this.setState({ user: user });
       });
       this.getUserGoals(this.state.user);
     }
@@ -67,71 +67,82 @@ export default withAuth(
         .then(res => res.json())
         .then(res => {
           console.log('GETTIN GOALS: ', res);
-          this.setState({ goals: res.goals.filter(item => this.state.user === item.owner) });
+          this.setState({ goals: res.goals.filter(item => this.state.user.email === item.owner) });
         });
     };
 
     loadGoals = goals => {
       // adds a div with the current goals - rendered on auth homepage
       console.log('LOAD GOALS: ', goals);
-      return <div key={goals.id}>
+      return (
+        <div key={goals.id}>
           <h1>{goals.goal}</h1>
           <h3>{goals.complete}</h3>
           <p>{goals.dueDate}</p>
           <button>Edit</button>
           <button>Complete</button>
-          <button onClick={() => {
-              removeGoal(goals.id);
-            }}>
+          <button
+            onClick={() => {
+              this.removeGoal(goals.id);
+            }}
+          >
             Remove
           </button>
-        </div>;
+        </div>
+      );
     };
 
-    addGoal = (val) => {
+    addGoal(event){
       // Assemble data, post goal to heroku on user submssion
-      const newGoal = { goal: val };
-      const postData = {};
-      fetch(this.goalsUrl, postData)
+      console.log('New Goal: ', event.target);
+      const formElement = event.target;
+      const formData = new FormData(formElement);
+      const newGoal = { 
+        goal: formData.get('newGoal'),
+        dueDate: formData.get('dueDate'),
+        owner: this.state.user.email,
+        complete: false
+      };
+      console.log(newGoal);
+      fetch(this.goalsUrl, { 
+        method: 'POST', 
+        body: JSON.stringify(newGoal) 
+      })
         .then(res => res.json())
         .then(res => {
           console.log('ADD GOAL', res);
+          const newGoals = this.state.goals.push(res);
+          this.setState({ goals: newGoals });
         })
         .catch(err => console.log(err));
-      // this.state.data.push(res.data);
-      // this.setState({ data: this.state.data });
-    }
+    
+    };
 
-    removeGoal(id) {
+    removeGoal = id => {
       // remove a goal from front and back end.
       const remainder = this.state.goals.filter(item => {
-        if (item.id !== id) return goal;
+        if (item.id !== id) return item;
       });
-      fetch(this.goalsUrl, {
+      this.setState({ goals: remainder });
+      fetch(this.goalsUrl+'/'+id, {
         //look up DELETE methods
         method: 'DELETE'
       })
         .then(res => res.json())
         .then(res => {
-          console.log('DELETED GOAL!')
+          console.log('DELETED GOAL!');
         })
-        .catch(err => console.log(err))
-    }
+        .catch(err => console.log(err));
+    };
 
     render() {
       if (this.state.authenticated === null) return null;
-      const homeView = this.state.authenticated ? <div className="user-content">
-          {/* BREAK OUT TITLE COMPONENT */}
-          <h1>SMART TRAK</h1>
-          <p>Set your aim and hit your targets</p>
-          <AddaGoalForm addGoal={this.addGoal} />
-
+      const homeView = this.state.authenticated ? 
+        <div className="user-content">
+          <AddaGoalForm addGoal={this.addGoal.bind(this)} />
           {/* BREAK OUT GOALS LIST COMPONENT */}
-          {this.state.goals.map(item => this.loadGoals(item))}
+          {}
         </div> : <div className="splash">
-          {/* BREAK OUT TITLE2 COMPONENT */}
-          <h1>SMART TRAK</h1>
-          <p>Set your aim and hit your targets</p>
           <Link to="/register">CREATE AN ACCOUNT</Link>
           <a href="javascript:void(0)" onClick={this.props.auth.login}>
             SIGN IN
@@ -145,7 +156,16 @@ export default withAuth(
             </ul>
           </div>
         </div>;
-      return <div>{homeView}</div>;
+      return (
+        <div>
+          <div className="slug">
+            {/* BREAK OUT TITLE COMPONENT */}
+            <h1>SMART TRAK</h1>
+            <p>Set your aim and hit your targets</p>
+          </div>
+          {homeView}
+        </div>
+      );
     }
   }
 );
