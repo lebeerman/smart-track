@@ -4,6 +4,9 @@ A basic CRUD app, front end repo [HERE]()
 
 Feedback welcome!
 
+To Do:
+- Edittable Goals once submitted
+- Redux
 
 ### RUBRIC:  Database
 
