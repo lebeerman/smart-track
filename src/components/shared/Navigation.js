@@ -43,20 +43,25 @@ export default withAuth(
             </a>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+            <Link to="/register">
+              Register
+            </Link>
           </li>
         </ul>
       );
-      return (
-        <nav>
+      return <nav>
+          <div className="slug">
+            {/* BREAK OUT TITLE COMPONENT */}
+            <h1>SMART TRAK</h1>
+            <p>Set your aim and hit your targets</p>
+          </div>
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             {authNav}
           </ul>
-        </nav>
-      );
+        </nav>;
     }
   }
 );
