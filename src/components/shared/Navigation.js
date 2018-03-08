@@ -21,11 +21,12 @@ export default withAuth(
     componentDidUpdate() {
       this.checkAuthentication();
     }
-
     render() {
       if (this.state.authenticated === null) return null;
-      const authNav = this.state.authenticated ? (
-        <ul className="auth-nav">
+      const authNav = this.state.authenticated ? <ul className="auth-nav">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <a href="javascript:void(0)" onClick={this.props.auth.logout}>
               Logout
@@ -34,9 +35,10 @@ export default withAuth(
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-        </ul>
-      ) : (
-        <ul className="auth-nav">
+        </ul> : <ul className="auth-nav">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <a href="javascript:void(0)" onClick={this.props.auth.login}>
               Login
@@ -45,16 +47,10 @@ export default withAuth(
           <li>
             <Link to="/register">Register</Link>
           </li>
-        </ul>
-      );
+        </ul>;
       return (
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
             {authNav}
-          </ul>
         </nav>
       );
     }

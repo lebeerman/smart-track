@@ -25,5 +25,6 @@ export const AddaGoalForm = ({ addGoal, handleDate }) => {
         />
         <input type="submit" value="SUBMIT" />
       </form>
+      
     </div>;
 }
