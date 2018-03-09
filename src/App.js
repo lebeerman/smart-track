@@ -19,27 +19,6 @@ export default class App extends Component {
     error:''
   }
   render() {
-//  const Main = styled.div`
-//    background-color: #2f4858;
-//    width: 300px;
-//    min-height: 200px;
-//    margin: 30px auto;
-//    box-sizing: border-box;`;
-
-//  const Header = styled.h2`
-//    padding: 10px 20px;
-//    text-align: center;
-//    color: black;
-//    fontsize: 22px;`;
-
-//  const ErrorMessage = styled.p`
-//    color: white;
-//    font-size: 13px;`;
-//   <Header>
-// </Header>
-// <Navigation />
-// <Main>
-// </Main>
       return (
         <div className="App" >
           <div className="App-header" >

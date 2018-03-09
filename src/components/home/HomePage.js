@@ -181,18 +181,19 @@ export default withAuth(
 
     render() {
       if (this.state.authenticated === null) return null;
-      const homeView = this.state.authenticated ? (
-        <div className="user-content">
+      const homeView = this.state.authenticated ? <div className="user-content">
           <AddaGoalForm addGoal={this.addGoal.bind(this)} />
           {/* BREAK OUT GOALS LIST COMPONENT */}
           {this.state.goals.map(item => this.loadGoals(item))}
-        </div>
-      ) : (
-        <div className="splash">
-          <Link to="/register">CREATE AN ACCOUNT</Link>
-          <a href="javascript:void(0)" onClick={this.props.auth.login}>
-            SIGN IN
-          </a>
+        </div> : <div className="splash">
+          <div className="call-to-action">
+            <button className="register"> 
+              <Link to="/register">CREATE AN ACCOUNT</Link>
+            </button>
+            <button href="javascript:void(0)" onClick={this.props.auth.login}>
+              SIGN IN
+            </button>
+          </div>
           <div>
             <h3>Why set goals with Smart Trak?</h3>
             <ul>
@@ -201,8 +202,7 @@ export default withAuth(
               <li>Goals sustain momentum.</li>
             </ul>
           </div>
-        </div>
-      );
+        </div>;
       return (
         <div>
           {homeView}

@@ -1,6 +1,7 @@
 import React from 'react';
 import OktaAuth from '@okta/okta-auth-js';
 import { withAuth } from '@okta/okta-react';
+import { Link } from 'react-router-dom';
 
 export default withAuth(
   class LoginForm extends React.Component {
@@ -36,6 +37,7 @@ export default withAuth(
           this.setState({ error: err.message });
           console.log(err.statusCode + ' error', err);
         });
+      return <Link to="/" />;
     }
 
     handleUsernameChange(e) {
@@ -49,38 +51,25 @@ export default withAuth(
     render() {
       if (this.state.sessionToken) {
         this.props.auth.redirect({ sessionToken: this.state.sessionToken });
-        return null;
-      }
+        return <Link to="/" />;
+      };
 
       const errorMessage = this.state.error ? (
         <span className="error-message">{this.state.error}</span>
       ) : null;
 
-      return (
-        <form onSubmit={this.handleSubmit}>
+      return <form id="forms" onSubmit={this.handleSubmit}>
           {errorMessage}
+          <h3>Login</h3>
           <div className="form-element">
-            <label>Username:</label>
-            <input
-              id="username"
-              type="text"
-              value={this.state.username}
-              onChange={this.handleUsernameChange}
-            />
+            <input id="username" type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
           </div>
 
           <div className="form-element">
-            <label>Password:</label>
-            <input
-              id="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
+            <input id="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
           </div>
-          <input id="submit" type="submit" value="Submit" />
-        </form>
-      );
+          <input className="register" type="submit" value="LOGIN" />
+        </form>;
     }
   }
 );
