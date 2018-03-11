@@ -28,16 +28,16 @@ export default withAuth(
           username: this.state.username,
           password: this.state.password
         })
-        .then(res =>
+        .then(res => {
           this.setState({
             sessionToken: res.sessionToken
-          })
-        )
+          });
+          <Link to="/" />;
+        })
         .catch(err => {
           this.setState({ error: err.message });
           console.log(err.statusCode + ' error', err);
         });
-      return <Link to="/" />;
     }
 
     handleUsernameChange(e) {
@@ -68,7 +68,7 @@ export default withAuth(
           <div className="form-element">
             <input id="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
           </div>
-          <input className="register" type="submit" value="LOGIN" />
+          <input className="register" type="submit" value="LOG IN" />
         </form>;
     }
   }

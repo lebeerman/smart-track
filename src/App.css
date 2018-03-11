@@ -21,6 +21,7 @@
 .App-intro {
   font-size: large;
 }
+
 main {
   display: flex;
   flex-direction: column;
@@ -35,23 +36,27 @@ main {
   align-items: center;
 
 }
+
 .call-to-action button {
   min-width: 250px;
   height: 10%;
   text-decoration: none;
-  border: 2px solid #111111;
+  border: 1px solid #111111;
   margin: 10px 0;
   padding: 10px;
   border-radius: 20px;
 }
+
 .call-to-action a, button {
   text-decoration: none;
   color: black;
   border-radius: 20px;
 }
-button:hover, .register:hover {
-    border: 2px solid #2afc74 !important;
+
+button:hover, .register:hover, .create:hover {
+    border: 1px solid #2afc74 !important;
     background-color: #2afc74;
+    color: white;
 }
 
 .register {
@@ -63,7 +68,7 @@ button:hover, .register:hover {
   height: 10%;
   min-width: 250px;
   text-align: center;
-  border: 2px solid #111111;
+  border: 1px solid #111111;
   border-radius: 20px;
 }
 
@@ -71,14 +76,17 @@ button:hover, .register:hover {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
 .auth-nav{
   display: flex !important;
   flex-direction: row-wrap !important;
   justify-content: center;
 }
+
 .auth-nav>li {
   padding: 0 10px;
 }
+
 ul li, .auth-nav, div ul {
   padding: 0;
   text-decoration: none;
@@ -95,9 +103,11 @@ ul li, .auth-nav, div ul {
   margin: 20px 0;
   padding: 20px 5px;
 }
+
 .form-element {
   margin-bottom: 1em;
 }
+
 input {
   border: 1px solid #F5F5F5;
   border-radius: 2px;
@@ -106,8 +116,7 @@ input {
   width: 100%;
 }
 
-
-.add-box{
+.add-box, .card{
   width: 50%vw;
   min-width: 250px;
   border: 2px solid #333333;
@@ -117,6 +126,49 @@ input {
   margin: 5% 0;
 }
 
+.card-header {
+
+}
+.card h3 {
+  
+}
+.card-footer-buttons {
+  display:flex;
+  flex-direction: row-wrap;
+}
+input.create {
+  color: #111111;
+  background-color: #1db954;
+  text-decoration: none;
+  margin: 5px 10px;
+  padding: 10px;
+  height: 10%;
+  min-width: 200px;
+  text-align: center;
+  border: 1px solid #111111;
+  border-radius: 20px;
+}
+button.register, button.cancel {
+  margin: 5px 10px;
+  padding: 5px;
+}
+.cancel {
+  color: #111111;
+  background-color: rgb(219, 3, 3);
+  text-decoration: none;
+  margin: 5px 10px;
+  padding: 10px;
+  height: 10%;
+  max-width: 20%;
+  text-align: center;
+  border: 1px solid #111111;
+  border-radius: 15px;
+}
+.cancel:hover {
+  color: white;
+  background-color: red;
+  border: 1px solid red !important;
+}
 .form-control {
   min-width: 300px;
 }

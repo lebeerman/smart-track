@@ -21,6 +21,7 @@ export default withAuth(
     componentDidUpdate() {
       this.checkAuthentication();
     }
+    
     render() {
       if (this.state.authenticated === null) return null;
       const authNav = this.state.authenticated ? <ul className="auth-nav">

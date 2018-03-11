@@ -95,7 +95,7 @@ export default withAuth(
           <div className="form-element">
             <input type="password" id="password" required="required" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
           </div>
-          <input className="register" id="submit" value="SIGN UP" />
+          <input className="register" type="submit" id="submit" value="SIGN UP" />
         </form>;
     }
   }

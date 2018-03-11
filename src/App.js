@@ -10,8 +10,6 @@ import LoginPage from './components/auth/LoginPage';
 import ProfilePage from './components/auth/ProfilePage';
 import './App.css';
 
-import styled from 'styled-components';
-
 
 
 export default class App extends Component {

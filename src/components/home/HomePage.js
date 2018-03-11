@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { withAuth } from '@okta/okta-react';
 import { AddaGoalForm } from './AddaGoal.js';
+import { GoalCard } from "./GoalCard.js";
 
 export default withAuth(
   class HomePage extends React.Component {
@@ -66,38 +67,7 @@ export default withAuth(
     loadGoals = goals => {
       // adds a div with the current goals - rendered on auth homepage
       console.log('LOAD GOALS: ', goals);
-      return <div className="card" key={goals.id}>
-          <div className="card-header">
-            <h1 className="card-title">{goals.goal}</h1>
-            <p>{goals.dueDate}</p>
-          </div>
-          <div className="card-body">{goals.complete ? <h3>DONE</h3> : <h3>NOT DONE</h3>}</div>
-          <div className="card-footer">
-            {/* <button onClick={e => {
-                e.preventDefault();
-                this.editGoal(goals.id);
-              }}>
-              Edit
-            </button> */}
-            {goals.complete ? <button onClick={e => {
-                  e.preventDefault();
-                  this.completeGoal(goals.id);
-                }}>
-                Not Completed!
-              </button> : <button onClick={e => {
-                  e.preventDefault();
-                  this.completeGoal(goals.id);
-                }}>
-                Completed!
-              </button>}
-            <button onClick={e => {
-                e.preventDefault();
-                this.removeGoal(goals.id);
-              }}>
-              Remove
-            </button>
-          </div>
-        </div>;
+      return <GoalCard goals={goals} completeGoal={this.completeGoal} removeGoal={this.removeGoal} />;
     };
 
     addGoal(event) {
