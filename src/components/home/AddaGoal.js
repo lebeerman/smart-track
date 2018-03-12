@@ -12,7 +12,7 @@ export class AddaGoalForm extends React.Component {
       console.log('TOGGLE!!!', this.setState({showForm: toggle}));
     };
     return <div>
-        <button className={this.state.showForm ? 'hidden' : 'add-box register'} onClick={e => {
+        <button className={this.state.showForm ? 'hidden' : 'add-box'} onClick={e => {
             showAdd();
           }}>
           Add A Goal

@@ -28,6 +28,7 @@ export default withAuth(
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>|</li>
           <li>
             <a href="javascript:void(0)" onClick={this.props.auth.logout}>
               Logout
@@ -40,6 +41,7 @@ export default withAuth(
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>|</li>
           <li>
             <a href="javascript:void(0)" onClick={this.props.auth.login}>
               Login

@@ -5,40 +5,43 @@ import Moment from 'react-moment';
 
 export class GoalCard extends React.Component {
   render() {
-    return <div className="card" key={this.props.goals.id}>
-        {console.log('Card Props: ', this.props)}
-        <div className="card-header">
-          <h1 className="card-title">{this.props.goals.goal}</h1>
-          <Moment format="M/DD/YYYY HH:mm"> 
-            {this.props.goals.dueDate} 
-          </Moment>
-        </div>
-        <div className="card-status">{this.props.goals.complete ? <h3>DONE</h3> : <h3>NOT DONE</h3>}</div>
-        <div className="card-footer">
-          {/* <button onClick={e => {
-                      e.preventDefault();
-                      this.editGoal(this.props.goals.id);
-                    }}>
-                    Edit
-                  </button> */}
-          {this.props.goals.complete ? <button onClick={e => {
+    return <div key={this.props.goals.id}>
+        {this.props.goals.complete ? <div className="card">
+            <div className="card-header">
+              <h3 className="card-title">{this.props.goals.goal}</h3>
+              <Moment format="M/DD/YYYY HH:mm">D{this.props.goals.dueDate}</Moment>
+            </div>
+            <button className="complete" onClick={e => {
                 e.preventDefault();
                 this.props.completeGoal(this.props.goals.id);
               }}>
-              Not Completed!
-            </button> : <button className="register" onClick={e => {
+              Oops, not complete
+            </button>
+            <button className="cancel" onClick={e => {
                 e.preventDefault();
-                this.props.completeGoal(this.props.goals.id);
+                this.props.removeGoal(this.props.goals.id);
               }}>
-              ✓
-            </button>}
-          <button className="remove" onClick={e => {
-              e.preventDefault();
-              this.props.removeGoal(this.props.goals.id);
-            }}>
-            ✖
-          </button>
-        </div>
+              ✖
+            </button>
+          </div> : <div className="card" key={this.props.goals.id}>
+            <div className="card-header">
+              <h1 className="card-title">{this.props.goals.goal}</h1>
+              <Moment format="M/DD/YYYY HH:mm">{this.props.goals.dueDate}</Moment>
+            </div>
+            <div className="card-footer">
+              {this.props.goals.complete ? <button className="complete" onClick={e => {
+                    e.preventDefault();
+                    this.props.completeGoal(this.props.goals.id);
+                  }}>
+                  Not Completed!
+                </button> : <button className="complete" onClick={e => {
+                    e.preventDefault();
+                    this.props.completeGoal(this.props.goals.id);
+                  }}>
+                  Complete!
+                </button>}
+            </div>
+          </div>}
       </div>;
   }
 }

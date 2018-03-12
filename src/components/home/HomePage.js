@@ -22,7 +22,7 @@ export default withAuth(
         },
         goals: []
       };
-      this.goalsUrl = 'http://localhost:3001/goals';
+      this.goalsUrl = 'https://smart-trak.herokuapp.com/goals/';
       this.usersUrl = 'https://smart-trak.herokuapp.com/api/users/db';
       this.checkAuthentication = this.checkAuthentication.bind(this);
       this.checkAuthentication();
@@ -135,7 +135,7 @@ export default withAuth(
         if(item.id === id) {
           item.complete = (!item.complete);
           console.log('complete',item);
-          fetch('https://smart-trak.herokuapp.com/goals' + '/' + id, {
+          fetch('https://smart-trak.herokuapp.com/goals/' + id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers: new Headers({
@@ -157,20 +157,18 @@ export default withAuth(
           {this.state.goals.map(item => this.loadGoals(item))}
         </div> : <div className="splash">
           <div className="call-to-action">
-            <button className="register"> 
-              <Link to="/register">CREATE AN ACCOUNT</Link>
-            </button>
+            <Link className="create" to="/register">
+              CREATE AN ACCOUNT
+            </Link>
             <button href="javascript:void(0)" onClick={this.props.auth.login}>
               SIGN IN
             </button>
           </div>
-          <div>
-            <h3>Why set goals with Smart Trak?</h3>
-            <ul>
-              <li>Goals guide your focus and steer behavior.</li>
-              <li>Goal setting promotes self-mastery.</li>
-              <li>Goals sustain momentum.</li>
-            </ul>
+          <div className="splash-text">
+            <h1>Why use Smart Trak?</h1>
+            <h3>Goals guide your focus and steer behavior.</h3>
+            <h3>Goal setting promotes self-mastery.</h3>
+            <h3>Goals sustain momentum.</h3>
           </div>
         </div>;
       return (
