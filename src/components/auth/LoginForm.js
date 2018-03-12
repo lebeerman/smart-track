@@ -36,7 +36,6 @@ export default withAuth(
         })
         .catch(err => {
           this.setState({ error: err.message });
-          console.log(err.statusCode + ' error', err);
         });
     }
 

@@ -35,7 +35,6 @@ export default withAuth(class ProfilePage extends React.Component {
     if(!this.state.user) return null;
     return <section className="user-profile">
         <h1>User Profile</h1>
-        {console.log(this.state.user)}
         <p>*New features coming soon!</p>
         <div>
           <label>Name: </label>

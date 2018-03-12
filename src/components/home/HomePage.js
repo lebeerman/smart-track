@@ -9,7 +9,6 @@ export default withAuth(
     constructor(props) {
       //checking okta for auth setting - determines if the home page will render user content or a splash page
       super(props);
-      console.log('constructing!');
       this.state = {
         authenticated: null,
         user: {
@@ -29,7 +28,6 @@ export default withAuth(
     }
 
     async checkAuthentication() {
-      console.log('ASYNC AUTHING!');
       const authenticated = await this.props.auth.isAuthenticated();
       if (authenticated !== this.state.authenticated) {
         this.setState({ authenticated });
@@ -37,7 +35,6 @@ export default withAuth(
     }
 
     componentDidMount() {
-      console.log('Mounting!');
       this.checkAuthentication();
       this.getCurrentUser();
     }
@@ -45,7 +42,6 @@ export default withAuth(
     getCurrentUser() {
       // gets the user info from te okta API then updates user goals from smart-trak API
       this.props.auth.getUser().then(user => {
-        console.log('CURRENT USER: ', user);
         this.setState({ user: user });
         if(user) this.getUserGoals(user);
       });
@@ -60,19 +56,16 @@ export default withAuth(
             return this.state.user.email === item.owner;
           });
           this.setState({ goals: userGoalList });
-          console.log('GETTIN GOALS: ', this.state.goals);
         });
     };
 
     loadGoals = goals => {
       // adds a div with the current goals - rendered on auth homepage
-      console.log('LOAD GOALS: ', goals);
       return <GoalCard goals={goals} completeGoal={this.completeGoal} removeGoal={this.removeGoal} />;
     };
 
     addGoal(event) {
       // Assemble data, post goal to heroku on user submssion
-      console.log('New Goal: ', event.target);
       const formElement = event.target;
       const formData = new FormData(formElement);
       const newGoal = {
@@ -81,7 +74,6 @@ export default withAuth(
         owner: this.state.user.email,
         complete: false
       };
-      console.log(newGoal);
       fetch(this.goalsUrl, {
         method: 'POST',
         headers: {
@@ -93,7 +85,6 @@ export default withAuth(
         .then(res => {
           const newGoals = this.state.goals;
           newGoals.push(res.goal);
-          console.log('ADD GOAL', newGoals);
           this.setState({ goals: newGoals });
         })
         .catch(err => console.log(err));
@@ -109,9 +100,9 @@ export default withAuth(
       })
         .then(res => res.json())
         .then(res => {
-          console.log('DELETED GOAL!', res);
+          console.log(res);
         })
-        .catch(err => console.log(err.text));
+        .catch(err => console.log(err));
       const remainder = this.state.goals.filter(item => {
         if (item.id !== id) return item;
       });
@@ -134,7 +125,6 @@ export default withAuth(
       var updatedGoals = this.state.goals.forEach(item => {
         if(item.id === id) {
           item.complete = (!item.complete);
-          console.log('complete',item);
           fetch(this.goalsUrl + id, {
             method: 'PUT',
             body: JSON.stringify(item),
