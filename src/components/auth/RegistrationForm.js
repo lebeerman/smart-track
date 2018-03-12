@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import OktaAuth from '@okta/okta-auth-js';
 import { withAuth } from '@okta/okta-react';
 
@@ -83,6 +82,7 @@ export default withAuth(
 
       return <form id="forms" onSubmit={this.handleSubmit}>
           <h3>Sign up</h3>
+          <p>*Passwords must be at least 8 charaters and contain: upper/lowercase, a number, and special character</p>
           <div className="form-element">
             <input type="email" id="email"  required="required" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
           </div>

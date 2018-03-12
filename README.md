@@ -1,26 +1,20 @@
 # SMART Track App
 ---
-A basic CRUD app, front end repo [HERE]()
+A basic Goal Keeping CRUD app.  
+ * api repo [HERE](https://github.com/lebeerman/smart-track-express).
 
-Feedback welcome!
+Current user flow - create an account, add and save goals, mark goals complete, and remove them from your list. 
 
-To Do:
-- Edittable Goals once submitted
-- Redux
+### Feedback welcome!
+---
+### To Do:
+- Edittable Goals once submitted. 
+- Counter of completed goal.
+- links to SMART goal strategies.
+- Redux!!!
 
-### RUBRIC:  Database
-
-* [ ] Uses migrations
-* [ ] Uses seeds
-* [ ] Database is connected
-
-### Model 1 & Model 2
-
-* [ ] List   [ ] List
-* [ ] Read   [ ] Read    
-* [ ] Create [ ] Create
-* [ ] Update [ ] Update
-* [ ] Delete [ ] Delete
+### Bug fixes/known issue: 
+* on logging in a second time during a browser session, occasional lockup of browser. Redirect issue?
 
 
 ---
@@ -28,7 +22,7 @@ To Do:
 - [Data Modeling, JSON + Postgres](https://blog.codeship.com/unleash-the-power-of-storing-json-in-postgres/)
 - [React app + node/express](https://medium.freecodecamp.org/how-to-make-create-react-app-work-with-a-node-backend-api-7c5c48acb1b0)
 
-- Take a look at [this repo] for examples of serving static files(https://github.com/esausilva/quick-node-server/blob/master/server.js).
+- Take a look at [this repo](https://github.com/esausilva/quick-node-server/blob/master/server.js) for examples of serving static files.
 
 - Heroku deployment help video by Stephen Grider [here](https://youtu.be/Ru3Rj_hM8bo) 
 

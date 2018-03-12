@@ -31,6 +31,9 @@ main {
   font-size: 1.5rem;
   font-weight: 100%;
 }
+.App-title img {
+  margin-right: 1rem;
+}
 .App-intro {
   font-size: large;
 }
@@ -189,7 +192,7 @@ input {
 }
 .card-title {
   margin: 10px 0 0 5px;
-  font-size: 100%;
+  font-size: 150%;
 }
 .card-footer-buttons {
   display: flex;
@@ -211,6 +214,18 @@ input.create {
 .complete {
   color: #111111;
   background-color: #1db954;
+  text-decoration: none;
+  margin: 5px 5px;
+  padding: 10px;
+  height: 10%;
+  min-width: 180px;
+  text-align: center;
+  border: 1px solid #111111;
+  border-radius: 20px;
+}
+.incomplete {
+  color: #111111;
+  background-color: #7393ff;
   text-decoration: none;
   margin: 5px 5px;
   padding: 10px;

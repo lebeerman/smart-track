@@ -9,13 +9,13 @@ export class GoalCard extends React.Component {
         {this.props.goals.complete ? <div className="card">
             <div className="card-header">
               <h3 className="card-title">{this.props.goals.goal}</h3>
-              <Moment format="M/DD/YYYY HH:mm">D{this.props.goals.dueDate}</Moment>
+              <Moment format="M/DD/YYYY HH:mm">{this.props.goals.dueDate}</Moment>
             </div>
-            <button className="complete" onClick={e => {
+            <button className="incomplete" onClick={e => {
                 e.preventDefault();
                 this.props.completeGoal(this.props.goals.id);
               }}>
-              Oops, not complete
+              Incomplete
             </button>
             <button className="cancel" onClick={e => {
                 e.preventDefault();
@@ -26,14 +26,14 @@ export class GoalCard extends React.Component {
           </div> : <div className="card" key={this.props.goals.id}>
             <div className="card-header">
               <h1 className="card-title">{this.props.goals.goal}</h1>
-              <Moment format="M/DD/YYYY HH:mm">{this.props.goals.dueDate}</Moment>
+              <label>Due: </label><span> <Moment format="M/DD/YYYY HH:mm">{this.props.goals.dueDate}</Moment></span>
             </div>
             <div className="card-footer">
               {this.props.goals.complete ? <button className="complete" onClick={e => {
                     e.preventDefault();
                     this.props.completeGoal(this.props.goals.id);
                   }}>
-                  Not Completed!
+                   Completed
                 </button> : <button className="complete" onClick={e => {
                     e.preventDefault();
                     this.props.completeGoal(this.props.goals.id);

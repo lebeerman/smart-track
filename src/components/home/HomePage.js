@@ -18,7 +18,7 @@ export default withAuth(
         profile: {
           firstName: 'Dan',
           lastName: 'Beerman',
-          email: 'shitfuck@butt.com'
+          email: ''
         },
         goals: []
       };
@@ -101,7 +101,7 @@ export default withAuth(
 
     removeGoal = id => {
       // remove a goal from front and back end.
-      fetch(this.goalsUrl + '/' + id, {
+      fetch(this.goalsUrl + id, {
         method: 'DELETE',
         headers: new Headers({
           'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ export default withAuth(
     };
 
     editGoal = id => {
-      return fetch('https://smart-trak.herokuapp.com/goals' + '/' + id, {
+      return fetch(this.goalsUrl + id, {
         method: 'PUT',
         body: JSON.stringify(this.state.goals.filter(item => item.id !== id)),
         headers: new Headers({
@@ -135,7 +135,7 @@ export default withAuth(
         if(item.id === id) {
           item.complete = (!item.complete);
           console.log('complete',item);
-          fetch('https://smart-trak.herokuapp.com/goals/' + id, {
+          fetch(this.goalsUrl + id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers: new Headers({
@@ -153,7 +153,6 @@ export default withAuth(
       if (this.state.authenticated === null) return null;
       const homeView = this.state.authenticated ? <div className="user-content">
           <AddaGoalForm addGoal={this.addGoal.bind(this)} />
-          {/* BREAK OUT GOALS LIST COMPONENT */}
           {this.state.goals.map(item => this.loadGoals(item))}
         </div> : <div className="splash">
           <div className="call-to-action">

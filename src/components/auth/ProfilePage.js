@@ -4,7 +4,8 @@ import { withAuth } from '@okta/okta-react';
 export default withAuth(class ProfilePage extends React.Component {
   constructor(props){
     super(props);
-    this.state = { user: null };
+    this.state = { user: null, goals:[] };
+    this.goalsUrl = 'https://smart-trak.herokuapp.com/goals/';
     this.getCurrentUser = this.getCurrentUser.bind(this);
   }
 
@@ -17,17 +18,36 @@ export default withAuth(class ProfilePage extends React.Component {
     this.getCurrentUser();
   }
 
+  getGoalNumber = (userEmail) => {
+  // chained to componentDidMount - gets goals from smart-trak API
+  fetch(this.goalsUrl)
+    .then(res => res.json())
+    .then(res => {
+      const userGoalList = res.goals.filter(item => {
+        return userEmail === item.owner;
+      });
+      this.setState({ goals: userGoalList });
+    });
+    return this.state.goals.length;
+  }
+
   render() {
     if(!this.state.user) return null;
     return <section className="user-profile">
         <h1>User Profile</h1>
+        {console.log(this.state.user)}
+        <p>*New features coming soon!</p>
         <div>
           <label>Name: </label>
-          <span>{this.state.user.name}</span>
+          <span> {this.state.user.name}</span>
         </div>
         <div>
           <label>Email: </label>
-          <span>{this.state.user.email}</span>
+          <span> {this.state.user.email}</span>
+        </div>
+        <div>
+          <label>Number of Goals: </label>
+          <span> {this.getGoalNumber(this.state.user.email)}</span>
         </div>
       </section>;
   }
