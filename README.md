@@ -1,9 +1,11 @@
 # SMART Track App
 ---
 A basic Goal Keeping CRUD app.  
- * api repo [HERE](https://github.com/lebeerman/smart-track-express).
+  * [Live App!](https://smart-trak.firebaseapp.com/).
+  * api repo [HERE](https://github.com/lebeerman/smart-track-express).
 
-Current user flow - create an account, add and save goals, mark goals complete, and remove them from your list. 
+Current user flow - create an account, add/save/delete goals, mark goals complete.
+Create an account.
 
 ### Feedback welcome!
 ---
@@ -11,9 +13,10 @@ Current user flow - create an account, add and save goals, mark goals complete, 
 - Edittable Goals once submitted. 
 - Counter of completed goal.
 - links to SMART goal strategies.
+- User account management.
 - Redux!!!
 
-### Bug fixes/known issue: 
+### Bug fixes/known issues: 
 * on logging in a second time during a browser session, occasional lockup of browser. Redirect issue?
 
 
