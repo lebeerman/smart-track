@@ -1,8 +1,8 @@
 # SMART Track App
 ---
 A basic Goal Keeping CRUD app.  
-  * [Live App!](https://smart-trak.firebaseapp.com/).
-  * api repo [HERE](https://github.com/lebeerman/smart-track-express).
+  * [Live App](https://smart-trak.firebaseapp.com/)
+  * API repo [HERE](https://github.com/lebeerman/smart-track-express)
 
 Current user flow - create an account, add/save/delete goals, mark goals complete.
 Create an account.
