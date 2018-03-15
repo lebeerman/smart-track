@@ -15,6 +15,8 @@ export default withAuth(
         password: '',
         sessionToken: null
       };
+      this.goalsUrl = 'https://smart-trak.herokuapp.com/goals/';
+      this.usersUrl = 'https://smart-trak.herokuapp.com/';
       this.oktaAuth = new OktaAuth({ url: config.url });
       this.checkAuthentication = this.checkAuthentication.bind(this);
       this.checkAuthentication();
@@ -51,7 +53,7 @@ export default withAuth(
     handleSubmit(e) {
       e.preventDefault();
       console.log('HANDLED: ', this.state);
-      fetch('/api/users', {
+      fetch('https://smart-trak.herokuapp.com/api/users', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
