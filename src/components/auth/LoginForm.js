@@ -37,6 +37,7 @@ export default withAuth(
         .catch(err => {
           this.setState({ error: err.message });
         });
+      console.log('Whats happening here? ',this.oktaAuth)
     }
 
     handleUsernameChange(e) {
