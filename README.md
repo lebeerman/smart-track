@@ -7,6 +7,10 @@ A basic Goal Keeping CRUD app.
 Current user flow - create an account, add/save/delete goals, mark goals complete.
 Create an account.
 
+## Demo Gif:
+
+![SMART Trak Gif](./smartTrak.gif)
+
 ### Feedback welcome!
 ---
 ### To Do:
