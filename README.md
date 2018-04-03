@@ -12,6 +12,17 @@ Create an account.
 ![SMART Trak Gif](./smartTrak.gif)
 
 ### Feedback welcome!
+
+To Install:
+```
+git clone [this repo address]
+cd [this folder]
+npm install
+
+npm start
+```
+Note: You will need to setup local variables, pull the server code and create an Okta account to develop this project further.
+
 ---
 ### To Do:
 - Edittable Goals once submitted. 
@@ -38,4 +49,15 @@ Create an account.
   * https://medium.com/@jaeger.rob/seed-knex-postgresql-database-with-json-data-3677c6e7c9bc
   * http://frontend.turing.io/lessons/module-4/knex-postgres.html
 
-### Auth Help: This is basically THE walkthrough: [OKTA + REACT + EXPRESS/NODE](https://developer.okta.com/blog/2018/02/06/build-user-registration-with-node-react-and-okta)
+### Auth Help: This is basically THE walkthrough: [OKTA + REACT + EXPRESS/NODE](https://developer.okta.com/blog/2018/02/06/build-user-registration-with-node-react-and-okta)Copyright <YEAR> <COPYRIGHT HOLDER>
+
+---
+# LICENSE
+
+MIT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
